@@ -5,9 +5,17 @@ import {
   PaginationEllipsis,
   PaginationItem,
   PaginationLink,
+  PaginationPrevious,
   PaginationNext,
 } from "./ui/pagination";
-import { Table, TableCell, TableHead, TableHeader, TableRow } from "./ui/table";
+import {
+  Table,
+  TableCell,
+  TableHead,
+  TableBody,
+  TableHeader,
+  TableRow,
+} from "./ui/table";
 import { Skeleton } from "./ui/skeleton";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuItem } from "@radix-ui/react-dropdown-menu";

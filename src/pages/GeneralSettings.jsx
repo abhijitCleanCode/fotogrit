@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Filter, Search } from "lucide-react";
+import { Edit, Filter, Search } from "lucide-react";
 
 import {
   Breadcrumb,
@@ -44,6 +44,27 @@ const tabs = [
   {
     value: "main-position",
     label: "Main Position",
+  },
+];
+
+const organizationColumns = [
+  {
+    accessorKey: "code",
+    header: "Code",
+    className: "w-[120px]",
+  },
+  {
+    accessorKey: "name",
+    header: "Organization Type",
+  },
+];
+
+const organizationActions = [
+  {
+    label: "Edit",
+    icon: <Edit className="h-4 w-4" />,
+    onClick: (row) => console.log("Edit", row.id),
+    variant: "ghost",
   },
 ];
 
@@ -127,6 +148,13 @@ const GeneralSettings = () => {
   const [searchValue, setSearchValue] = useState("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filterActive, setFilterActive] = useState(false);
+  // table local state
+  const [data, setData] = useState([
+    { id: "1", code: "EDU", name: "Educational Institution" },
+    // ... more data
+  ]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(3);
 
   return (
     <section>
@@ -166,7 +194,16 @@ const GeneralSettings = () => {
           />
         </div>
 
-        <ResuableTable />
+        <div className="mt-[32px]">
+          <ResuableTable
+            data={data}
+            columns={organizationColumns}
+            actions={organizationActions}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </div>
       </div>
     </section>
   );
